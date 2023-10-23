@@ -1,11 +1,16 @@
 package utilities;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -91,7 +96,7 @@ public class SeleniumUtility {
 	 * Utility to handle HTML dropdown list
 	 */
 	public void handleHtmlDropdownListWithIndex(WebElement element, int index) {
-		//waitForElementDisplayed(element);
+		// waitForElementDisplayed(element);
 		Select select = new Select(element);
 		select.selectByIndex(index);
 	}
@@ -103,6 +108,18 @@ public class SeleniumUtility {
 		Select select = new Select(element);
 		return select.getOptions();
 	}
+
+	public void takeScreenShotOfThePage(String location) {
+		// downcast the driver to access TakesScreenshot method
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		// capture screenshot as output type FILE
+		File file = ts.getScreenshotAs(OutputType.FILE);
+		try {
+			// save the screenshot taken in destination path
+			FileUtils.copyFile(file, new File(location));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	public void cleanUp() {
 		driver.close();

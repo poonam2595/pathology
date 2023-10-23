@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import utilities.SeleniumUtility;
+
+public class LoginPage extends SeleniumUtility {
 	WebDriver driver;
 
 	public LoginPage() {
@@ -35,6 +37,7 @@ public class LoginPage {
 
 	public void login() {
 		login.click();
+		takeScreenShotOfThePage("\\src\\test\\resources\\screenshots");
 	}
-	
+
 }

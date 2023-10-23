@@ -9,7 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class addPatient {
+import utilities.SeleniumUtility;
+
+public class addPatient extends SeleniumUtility {
 	WebDriver driver;
 
 	public addPatient() {
@@ -43,6 +45,7 @@ public class addPatient {
 		Thread.sleep(100);
 		save.click();
 		// WebDriverWait wait=new WebDriverWait(driver,Duration.seconds);
+		takeScreenShotOfThePage("\\src\\test\\resources\\screenshots");
 
 	}
 
@@ -52,6 +55,7 @@ public class addPatient {
 	public void dashboard() throws InterruptedException {
 		Thread.sleep(1000);
 		dashboard.click();
+		takeScreenShotOfThePage("\\src\\test\\resources\\screenshots");
 	}
 	
 

@@ -44,6 +44,7 @@ public class dashboard extends SeleniumUtility {
 
 	public void discount() {
 		handleHtmlDropdownListWithIndex(discount, 1);
+		takeScreenShotOfThePage("\\src\\test\\resources\\screenshots");
 	}
 
 }
